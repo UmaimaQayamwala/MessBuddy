@@ -28,7 +28,11 @@ const PinSch = mongoose.Schema({
     long: {
         type: Number,
         required: true
+    },
+    idd:{
+        type:String
     }
+
 }, { timestamps: true});
 
 module.exports = mongoose.model("Pin", PinSch);

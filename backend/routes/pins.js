@@ -9,9 +9,9 @@ router.post("/", verifyToken, createPin);
 router.get("/", getAllPins);
 
 // Edit pin
-router.put("/", verifyToken, updatePin);
+router.put("/editpin", verifyToken, updatePin);
 
 //Delete Pin
-router.delete("/:id", verifyToken, deletePin);
+router.delete("/deletepin/:id", verifyToken, deletePin);
 
 module.exports = router;
