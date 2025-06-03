@@ -10,6 +10,10 @@ import "./popupCard.css";
 const PopupCard = ({ currentUser, pin }) => {
     const [isEdit, setIsEdit] = useState(false);
     const [isDelete, setIsDelete] = useState(false);
+    // console.log("ratinnnggg---------------->",pin.rating);
+    // console.log("pin-----------------------------------------------------------",pin);
+    // console.log("cuurent-----------------------------------------------------------",currentUser);
+
 
     return (
         <>
@@ -28,7 +32,12 @@ const PopupCard = ({ currentUser, pin }) => {
                     <p className='desc'>{pin.desc}</p>
                     <label>Rating</label>
                     <div className='stars'>
-                        {Array(pin.rating).fill(<StarIcon className='star' />)}
+                         {pin.rating !=null && Array(pin.rating).fill(<StarIcon className='star' />)}
+                    
+
+                       
+                       
+                        
                     </div>
                     <label>Info</label>
                     <span className='username'>{pin.createdAt !== pin.updatedAt ? "Edited " : "Created "} by <b>{pin.username}</b></span>

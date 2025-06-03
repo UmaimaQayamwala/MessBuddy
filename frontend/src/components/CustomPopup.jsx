@@ -5,6 +5,9 @@ import PopupCard from './PopupCard';
 
 const CustomPopup = ({ newPlace, setNewPlace, currentUser, pin, showDetails }) => {
 
+
+
+
     return (
         <Popup
             latitude={newPlace ? newPlace.lat : pin.lat}

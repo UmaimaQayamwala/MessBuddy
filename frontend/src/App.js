@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import "./app.css";
 import Register from './components/Register';
 import Login from './components/Login';
-import CustomMap from './components/CustomMap';
+import CustomMap2 from './components/CustomMap2';
 import axios from 'axios';
 
 function App() {
@@ -41,9 +41,9 @@ function App() {
 
   return (
     <div className='App'>
-      <CustomMap currentUser={currentUser}/>
+      <CustomMap2 currentUser={currentUser}/>
       {currentUser ? (
-        <button className='button logout' onClick={handleLogout}>Log out</button>
+        <button className='button logout' id ="log" onClick={handleLogout}>Log out</button>
       ) : (
         <div className='buttons'>
           <button className='button login' onClick={() => { setShowLogin(true); setShowRegister(false) }}>Login</button>

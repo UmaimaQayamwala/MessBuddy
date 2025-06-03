@@ -22,8 +22,11 @@ const PinServices = {
         }
     },
     deletePin: async (pinId, token) => {
+        console.log("this is delete pin");
         try {
             // const deletedPin = await axios.delete(`https://messdekho.onrender.com/api/pins/deletepin/${pinId}`, { headers: { Authorization: `Bearer ${token}` } });
+
+            console.log("pinnn --------------",pinId);
             const deletedPin = await axios.delete(`http://localhost:5000/api/pins/deletepin/${pinId}`, { headers: { Authorization: `Bearer ${token}` } });
             return { deletedPin, success: true };
         } catch (error) {

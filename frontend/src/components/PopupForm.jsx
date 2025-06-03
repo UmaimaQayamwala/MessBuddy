@@ -9,6 +9,8 @@ const PopupForm = ({ currentUser, newPlace, setNewPlace, pin, setIsEdit, isEdit 
     const [desc, setDesc] = useState(null);
     const [rating, setRating] = useState(0);
 
+    console.log("formpin",pin);
+
     const handleCreatePin = async (e) => {
         e.preventDefault();
         const newPin = {
@@ -21,7 +23,8 @@ const PopupForm = ({ currentUser, newPlace, setNewPlace, pin, setIsEdit, isEdit 
         }
 
         const res = await PinServices.createPin(newPin, token);
-        console.log(res);
+        console.log("nanana",newPin);
+       
         setNewPlace(null);
         window.location.reload();
     };
@@ -44,13 +47,16 @@ const PopupForm = ({ currentUser, newPlace, setNewPlace, pin, setIsEdit, isEdit 
             pin.desc = newEditedPin.desc;
             pin.rating = newEditedPin.rating;
 
+           
+
             setIsEdit(false);
             setTitle(null);
             setDesc(null);
             setRating(0);
         }
     };
-
+    
+    console.log("rat---",rating);
     return (
         <>
             <div>
@@ -67,7 +73,7 @@ const PopupForm = ({ currentUser, newPlace, setNewPlace, pin, setIsEdit, isEdit 
                     />
                     <label>Rating</label>
                     <select
-                        defaultValue={isEdit ? pin.rating : 1}
+                        // defaultValue={isEdit ? pin.rating : 1}
                         onChange={(e) => setRating(e.target.value)}
                     >
                         <option value="1">1</option>
@@ -79,11 +85,13 @@ const PopupForm = ({ currentUser, newPlace, setNewPlace, pin, setIsEdit, isEdit 
                     <button className='submitButton' type='submit'>{isEdit ? "Edit Pin" : "Add Pin"}</button>
                     {isEdit && (
                         <button className='submitButton' onClick={() => {
+
+                            
                             setIsEdit(false);
                             setTitle(null);
                             setRating(0);
                             setDesc(null);
-                        }}>Cancle</button>
+                        }}>Cancel</button>
                     )}
                 </form>
             </div>
