@@ -1,12 +1,13 @@
-# MessDekho
+# MessBuddy
 
 <!-- ![MessDekho Logo](link_to_your_logo_or_image) -->
 
-MessDekho is a MERN stack application that allows users to discover and pin the locations of messes. The app utilizes the Mapbox API for mapping functionalities, providing an easy way to locate and explore mess locations.
+
+MessBuddy is a MERN stack application that allows users to discover and pin the locations of messes. The app utilizes the Mapbox API for mapping functionalities, providing an easy way to locate and explore mess locations.
 
 ## Overview
 
-MessDekho is designed to streamline the process of finding and sharing information about messes. With features like user authentication, geolocation, and the Mapbox API integration, users can conveniently locate, pin, and discover messes in their vicinity.
+MessBuddy is designed to streamline the process of finding and sharing information about messes. With features like user authentication, geolocation, and the Mapbox API integration, users can conveniently locate, pin, and discover messes in their vicinity.
 
 ## Features
 
