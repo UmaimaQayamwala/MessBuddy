@@ -1,7 +1,7 @@
 # MessBuddy
 
 <!-- ![MessDekho Logo](link_to_your_logo_or_image) -->
-<img src="https://res.cloudinary.com/dl4pehrgr/image/upload/v1748689629/location-Photoroom-photoaidcom-cropped_jku0ju.png" alt="logo" width="300">
+<img src="https://res.cloudinary.com/dl4pehrgr/image/upload/v1748689629/location-Photoroom-photoaidcom-cropped_jku0ju.png" alt="logo" width="300" margin-left="200">
 
 
 MessBuddy is a MERN stack application that allows users to discover and pin the locations of messes. The app utilizes the Mapbox API for mapping functionalities, providing an easy way to locate and explore mess locations.
