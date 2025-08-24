@@ -1,63 +1,57 @@
-.loginContainer{
-    position: absolute;
-    width: 300px;
-    height: 200px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: white;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+.loginContainer {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
-     /* margin-top: 4px;
-    background-color: white;
-    position: absolute;
-    
-    top: 10px;
-    right: 10px; */
+ 
 }
 
-.loginLogo{
-    color: teal;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: x-large;
-
+.loginLogo {
+  color: teal;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: x-large;
 }
 
 .loginButton {
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    background-color: teal;
-    cursor: pointer;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: teal;
+  cursor: pointer;
 }
 
 .failure {
-    color: red;
-    font-size: 12px;
-    text-align: center;
+  color: red;
+  font-size: 12px;
+  text-align: center;
 }
 
-.loginClose{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
+.loginClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
 }
 
 #loginInputs {
-    border: teal solid 1px;
-    border-radius: 10px;
-    margin: 5px 0px;
-    padding: 5px;
+  border: teal solid 1px;
+  border-radius: 10px;
+  margin: 5px 0px;
+  padding: 5px;
 }

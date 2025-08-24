@@ -11,10 +11,9 @@ function App() {
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
-  // Local Storage
   const myStorage = window.localStorage;
 
-  // For authentication and authorization stuff
+ 
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(myStorage.getItem("token"));
 

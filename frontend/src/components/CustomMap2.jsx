@@ -6,8 +6,6 @@ import RoomIcon from "@mui/icons-material/Room";
 import axios from "axios";
 import CustomPopup from "./CustomPopup";
 
-
-
 const CustomMap = ({ currentUser }) => {
   const [pins, setPins] = useState([{}]);
   const [newPlace, setNewPlace] = useState(null);
@@ -15,29 +13,27 @@ const CustomMap = ({ currentUser }) => {
   const [viewState, setViewState] = useState({
     longitude: 77.7523,
     latitude: 20.932,
-    zoom: 12,
+    zoom: 10,
   });
-  const mapurl= process.env.REACT_APP_Map_LIBRE;
-  const logo=process.env.REACT_APP_LOGO;
-
-
+  const mapurl = process.env.REACT_APP_Map_LIBRE;
+  const logo = process.env.REACT_APP_LOGO;
 
   const handleMarkerClick = (id, lat, lng) => {
-      
-          //  setcurridd(id);
+    //  setcurridd(id);
     setCurrentPlaceId(id);
   };
 
-  
-
   // double tap for mobile logic
   const [lastTouch, setLastTouch] = useState(0);
+
   const handleTouch = (e) => {
+   
     const currentTime = new Date().getTime();
     const timeSinceLastTouch = currentTime - lastTouch;
     if (timeSinceLastTouch < 400 && timeSinceLastTouch > 0) {
       handelAddClick(e);
     }
+
     setLastTouch(currentTime);
   };
 
@@ -47,18 +43,25 @@ const CustomMap = ({ currentUser }) => {
       lng,
       lat,
     });
+
+    const currentTime = new Date().getTime();
+    const timeSinceLastTouch = currentTime - lastTouch;
+    if (timeSinceLastTouch < 400 && timeSinceLastTouch > 0) {
+      handelAddClick(e);
+    }
+
+    setLastTouch(currentTime);
   };
 
   useEffect(() => {
     const getPins = async () => {
       try {
-   
-
         // i comment
         // const res = await axios.get("http://localhost:5000/api/pins/");
-        const res = await axios.get("https://messbuddy-backend.onrender.com/api/pins/");
+        const res = await axios.get(
+          "https://messbuddy-backend.onrender.com/api/pins/"
+        );
         setPins(res.data);
-       
       } catch (error) {
         console.log(error);
       }
@@ -66,36 +69,13 @@ const CustomMap = ({ currentUser }) => {
     getPins();
   }, []);
 
+  let pins2 = pins;
 
-//   let pins2=[{
-//     username: 'my',
-//     title: 'hfwuhedfu',
-//     desc: 'sdnjifh',
-//     rating: 0,
-//     lat: 20.967509458951284,
-//     long: 77.75101253967125,
-  
-//   },
-//   {
-//     username: 'my',
-//     title: 'hijdbfiffwuhedfu',
-//     desc: 'sdnjnjjkdeifh',
-//     rating: 0,
-//     lat: 20.954044109677483,
-//     long: 77.7677495239239,
-  
-//   }
-// ]
-let pins2=pins;
-// let object2=pins[0];
-// console.log("pinsss2---------------------------------------------------------------",pins2);
-
-  
   return (
     <div className="App">
       <div className="navbar">
-      <img src={logo} className="image" alt="img"></img>
-      <h1 className="text">M   e   s   s     B  u  d  d  y</h1>
+        <img src={logo} className="image" alt="img"></img>
+        <h1 className="text">M e s s B u d d y</h1>
       </div>
       <Map
         mapLib={maplibregl}
@@ -113,55 +93,50 @@ let pins2=pins;
           showAccuracyCircle={false}
           fitBoundsOptions={{ zoom: 15 }}
         ></GeolocateControl>
-        
-        {Array.isArray(pins2) && pins2.map((p, i) => (
-      <>
-       { !isNaN(p.lat) && !isNaN(p.long) && p.lat != null && p.long != null && ( <Marker longitude={p.long} latitude={p.lat} anchor="bottom">
-          <RoomIcon
-            style={{
-              color: p.username === currentUser ? "tomato" : "slateblue",
-              cursor: "pointer",
-            }}
-      
-            onClick={() => handleMarkerClick(p.idd, p.lat, p.long)}
-          />
-        </Marker>)}
-      
-        {p.idd=== currentPlaceId && (
+
+        {Array.isArray(pins2) &&
+          pins2.map((p, i) => (
+            <>
+              {!isNaN(p.lat) &&
+                !isNaN(p.long) &&
+                p.lat != null &&
+                p.long != null && (
+                  <Marker longitude={p.long} latitude={p.lat} anchor="bottom">
+                    <RoomIcon
+                      style={{
+                        color:
+                          p.username === currentUser ? "tomato" : "slateblue",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => handleMarkerClick(p.idd, p.lat, p.long)}
+                    />
+                  </Marker>
+                )}
+
+              {p.idd === currentPlaceId && (
+                <CustomPopup
+                  key={i}
+                  newPlace={newPlace}
+                  setNewPlace={setNewPlace}
+                  currentUser={currentUser}
+                  pin={p}
+                  setPins={setPins}
+                  showDetails={true}
+                />
+              )}
+            </>
+          ))}
+
+        {newPlace && currentUser && (
           <CustomPopup
-            key={i}
             newPlace={newPlace}
             setNewPlace={setNewPlace}
             currentUser={currentUser}
-            pin={p}
+            pin={null}
             setPins={setPins}
-            showDetails={true}
-            />
-          )}
-        </>
-      ))}
-
-
-
-
-
-
-
-
-
-
-
-       
-       {newPlace && currentUser && (
-      <CustomPopup
-        newPlace={newPlace}
-        setNewPlace={setNewPlace}
-        currentUser={currentUser}
-        pin={null}
-        setPins={setPins}
-        showDetails={false}
-      />
-    )}
+            showDetails={false}
+          />
+        )}
 
         <NavigationControl position="top-left" />
       </Map>
